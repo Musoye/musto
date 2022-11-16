@@ -1,0 +1,27 @@
+.body {
+    background-color: burlywood;
+}
+.head {
+    margin-top: 20px;
+}
+#word {
+    width: 120%;
+}
+#mean {
+    margin-top: 10px;
+}
+.notify {
+    font-size: 19px;
+    font-style: italic;
+}
+#word-result {
+    font-size: 20px;
+    font-style: italic;
+}
+#bottom {
+    position:absolute;
+    bottom: 0px;
+}
+.btm {
+    text-align: center;
+}
