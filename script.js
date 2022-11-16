@@ -13,8 +13,9 @@ window.onload = function () {
             $('#word-result').html('There is no such word in this dictionary or probably the spelling is not correct.');        
         }
     }
+    //the form submssion
     $('#word-form').submit(function () {
-        var word = $('#word').val();
+        var word = $('#word').val().toLowerCase();
         console.log(word);
         fetch('data.json').then((response) => response.json())
             .then((data) => displayResult(data[word])
