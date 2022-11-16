@@ -1,5 +1,6 @@
 window.onload = function () {
     $('#mean').hide();
+    //the result function
     function displayResult(word){
         if (word) {
             $('#mean').addClass('animated flash');
