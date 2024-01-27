@@ -3,9 +3,10 @@
 }
 .head {
     margin-top: 20px;
+    font-weight: bolder;
 }
 #word {
-    width: 120%;
+    width: 50%;
 }
 #mean {
     margin-top: 10px;
@@ -24,4 +25,10 @@
 }
 .btm {
     text-align: center;
+}
+
+@media (max-width: 780px) {
+    #word {
+        width: 80%;
+    }
 }

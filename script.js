@@ -1,38 +1,36 @@
 window.onload = function () {
     $('#mean').hide();
-    //the result function
+
     function AudioCheck() {
-        let audioElement = $('#myAudio');
-        let audioSource = $('#audioSource');
-        if (audioSource.attr('src')) {
-            audioElement.show();
-            audioSource.show();
+        if ($('#audioSource').attr('src')) {
+            $('#myAudio').show();
+            $('#audioSource').show();
         } else {
-            audioElement.hide();
-            audioSource.hide();
+            $('#myAudio').hide();
+            $('#audioSource').hide();
         }
     }
+
     function restart() {
         $('#audioSource').attr('src', '');
         $('#myAudio')[0].load();
-        $('#sound').text('')
-        $('#word-result').html('')
+        $('#sound').text('');
+        $('#word-result').html('');
+        $('#word-found').text('').hide();
+        $('#def').removeClass('text-warning').text('Defintions: ');
         AudioCheck();
     }
-    AudioCheck();
+
     function displayResult(data) {
-        console.log(data)
         if (!data.resolution) {
             let dat = data[0]
             $('#mean').addClass('animated flash');
             $('#mean').show();
             $('#sound').text(dat.phonetic)
-            let audioElement = $('#myAudio');
-            let audioSource = $('#audioSource');
             for (let ele of dat.phonetics) {
                 if (ele.audio) {
-                    audioSource.attr('src', ele.audio);
-                    audioElement[0].load();
+                    $('#audioSource').attr('src', ele.audio);
+                    $('#myAudio')[0].load();
                     break;
                 }
             }
@@ -47,9 +45,10 @@ window.onload = function () {
             $('#mean').addClass('animated flash');
             $('#mean').show();
             $('#def').addClass('text-warning').text(data.title);
-            $('#word-found').text(data.message + data.resolution);
+            $('#word-found').show().text(data.message + data.resolution);
         }
     }
+
     async function fetchData(url) {
         try {
             const response = await fetch(url);
@@ -71,7 +70,8 @@ window.onload = function () {
         }
     }
 
-    //the form submssion
+    AudioCheck();
+    //Form submssion
     $('#word-form').submit(function () {
         const word = $('#word').val().trim().toLowerCase();
         restart();
